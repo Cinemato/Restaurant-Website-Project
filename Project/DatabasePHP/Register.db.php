@@ -3,13 +3,14 @@ if(isset($_POST['register-submit']))
 {
     require('Objects.php');
 
-    $email = $_POST['email'];
-    $pass = $_POST['pass'];
-    $confirmPass = $_POST['confirm-pass'];
+    $name = $_POST['name-surname'];
+    $email = $_POST['email'];  
+    $pass = $_POST['password'];
+    $confirmPass = $_POST['password-again'];
 
-    if(empty($email) || empty($pass) || empty($confirmPass))
+    if( empty($name) || empty($email) || empty($pass) || empty($confirmPass))
     {
-        header("Location: ../register.php?error=emptyfields&mail=".$email);
+        header("Location: ../register.php?error=emptyfields&mail=".$email."&name=".$name);
         exit();
     }
     else if(!filter_var($email, FILTER_VALIDATE_EMAIL))
@@ -18,7 +19,7 @@ if(isset($_POST['register-submit']))
         exit();
     }
     else if($pass !== $confirmPass){
-        header("Location: ../register.php?error=passwordcheck&mail=".$email);
+        header("Location: ../register.php?error=passwordcheck&mail=".$email."&name=".$name);
         exit();
     }
     else
@@ -41,12 +42,12 @@ if(isset($_POST['register-submit']))
 
             if($checkResult > 0)
             {
-                header("Location: ../register.php?error=mailtaken&mail=".$email);
+                header("Location: ../register.php?error=mailtaken&mail=".$email."&name=".$name);
                 exit();
             }
             else
             {
-                $sql = "INSERT INTO users (email, pass) VALUES (?, ?)";
+                $sql = "INSERT INTO users (name, email, pass) VALUES (?, ?, ?)";
                 $stmt = mysqli_stmt_init($db->con);
 
                 if(!mysqli_stmt_prepare($stmt, $sql))
@@ -58,10 +59,10 @@ if(isset($_POST['register-submit']))
                 {
                     $hashPass = password_hash($pass, PASSWORD_DEFAULT);
 
-                    mysqli_stmt_bind_param($stmt, "ss", $email, $hashPass);
+                    mysqli_stmt_bind_param($stmt, "sss", $name, $email, $hashPass);
                     mysqli_stmt_execute($stmt);
 
-                    header("Location: ../login.php?signup=success&mail=".$email);
+                    header("Location: ../login.php?signup=success&mail=".$email."&name=".$name);
                     exit();
                 }
             }
