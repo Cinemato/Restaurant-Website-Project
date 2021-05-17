@@ -31,24 +31,24 @@ include('Partial-Files/header.php')
                             <form action="DatabasePHP/Register.db.php" method="post">
                                 <div class="name-surname-textfield">
                                     <label for="name-surname" class="text-field-text">Name-Surname*</label><br>
-                                    <input type="text" required id="name-surname" name="name-surname" class="text-field-input" value="<?php echo isset($_GET['name']) ? $_GET['name'] : ""?>"><br>
+                                    <input type="text" id="name-surname" name="name-surname" class="text-field-input" value="<?php echo isset($_GET['name']) ? $_GET['name'] : ""?>"><br>
                                 </div>   
                                 <div class="email-textfield">
                                     <label for="email" class="text-field-text">Email*</label><br>
-                                    <input type="text" required id="email" name="email" class="text-field-input" value="<?php echo isset($_GET['mail']) ? $_GET['mail'] : ""?>"><br>
+                                    <input type="text" id="email" name="email" class="text-field-input" value="<?php echo isset($_GET['mail']) ? $_GET['mail'] : ""?>"><br>
                                 </div>    
                                 <div class="password-textfield">
                                     <label for="password" class="text-field-text">Password*</label><br>
-                                    <input type="text"required id="password" name="password" class="text-field-input"><br>
+                                    <input type="password" id="password" name="password" class="text-field-input"><br>
                                 </div>   
                                 <div class="password-textfield">
                                     <label for="password-again" class="text-field-text">Password Again*</label><br>
-                                    <input type="text" required id="password-again" name="password-again" class="text-field-input"><br>
+                                    <input type="password"  id="password-again" name="password-again" class="text-field-input"><br>
                                 </div>   
-                                <button type="submit" class="action-button" name="register-submit"><a href="#">Sign Up</a></button>
+                                <button type="submit" class="action-button" name="register-submit">Sign Up</button>
                                 <div class="sign-in-redirector">
                                     <p class="link-redirector link-redirector-left">    
-                                        Already have an account? <a href="#">Sign In.</a>
+                                        Already have an account? <a href="login.php">Sign In.</a>
                                     </p>
                                 </div>  
                             </form>
