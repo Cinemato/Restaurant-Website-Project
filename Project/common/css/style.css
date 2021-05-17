@@ -1,6 +1,7 @@
 
 *{
     font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
 }
 
 /* MARK: This helps you to managing colors in one section. Whenever you want add/change color, apply "keyword" : "color code" pair. 
@@ -28,10 +29,49 @@ body{
     min-height: 100%;
 }
 
-
-a:hover{
-    text-decoration: none;
+header{
+    background-color: var(--os-navy-blue-clr);
 }
+
+.header-logo{
+    display: inline-block;  
+}
+
+
+.header-logo a{
+    display: block;
+    padding:20px;
+    color: var(--os-white-clr);
+}
+
+.header-logo a:hover {
+    text-decoration:none;
+    color:whitesmoke;
+}
+
+header ul{
+    margin-bottom:0px;
+}
+
+header ul li{
+    margin-left:60px;
+    margin-right:60px; 
+    display: inline-block;  
+}
+
+header ul li a {
+    color: var(--os-white-clr);
+    display: block;
+    padding:20px;
+}
+
+
+header ul li a:hover {
+    text-decoration:none;
+    color:whitesmoke;
+}
+
+
 
 .col-m6{
     padding-left: 0 !important;
