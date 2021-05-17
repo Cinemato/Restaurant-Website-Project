@@ -2,24 +2,25 @@
 include('Partial-Files/header.php')
 ?>
 <body>  
-<?php
-    if(isset($_GET['error']))
-    {
-        if($_GET['error'] == "emptyfields")
-            echo '<p class="error">Required Fields Are Empty!</p>';
-        else if($_GET['error'] == "invalidmail")
-            echo '<p class="error">Invalid Email!</p>';
-        else if($_GET['error'] == "passwordcheck")
-            echo '<p class="error">Passwords Are Not Equal!</p>';
-        else if($_GET['error'] == "mailtaken")
-            echo '<p class="error">Account Already Exists!</p>';
-    }
-?>
+
     <section class="login-panel">
         <div class="row no-gutters">
             <div class="col-6 panel left-panel vh-100">
                 <div class="left-panel-container">
                     <div class="col-12">
+                    <?php
+                    if(isset($_GET['error']))
+                    {
+                        if($_GET['error'] == "emptyfields")
+                            echo '<p class="error">Required Fields Are Empty!</p>';
+                        else if($_GET['error'] == "invalidmail")
+                            echo '<p class="error">Invalid Email!</p>';
+                        else if($_GET['error'] == "passwordcheck")
+                            echo '<p class="error">Passwords Are Not Equal!</p>';
+                        else if($_GET['error'] == "mailtaken")
+                            echo '<p class="error">Account Already Exists!</p>';
+                     }
+                    ?>
                         <div class="col-6 mx-auto">
                             <h1 id="page-name">Sign Up</h1>
                             <p id="page-description">See your growth and get consulting support!</p>
@@ -44,7 +45,7 @@ include('Partial-Files/header.php')
                                     <label for="password-again" class="text-field-text">Password Again*</label><br>
                                     <input type="text" required id="password-again" name="password-again" class="text-field-input"><br>
                                 </div>   
-                                <button type="submit" class="action-button"><a href="#">Sign Up</a></button>
+                                <button type="submit" class="action-button" name="register-submit"><a href="#">Sign Up</a></button>
                                 <div class="sign-in-redirector">
                                     <p class="link-redirector link-redirector-left">    
                                         Already have an account? <a href="#">Sign In.</a>

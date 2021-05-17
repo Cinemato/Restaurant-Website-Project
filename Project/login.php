@@ -2,17 +2,17 @@
 include('Partial-Files/header.php')
 ?>
 <body>
-<?php
-    if(isset($_GET['signup']))
-    {
-        echo '<p class="success">Registration Successful! You Can Login Now!</p>';
-    }
-?>
     <section class="login-panel">
         <div class="row no-gutters">
             <div class="col-6 panel left-panel vh-100";>
                 <div class="left-panel-container">
                     <div class="col-12">
+                    <?php
+                    if(isset($_GET['signup']))
+                    {
+                        echo '<p class="success">Registration Successful! You Can Login Now!</p>';
+                    }
+                    ?>
                         <div class="col-6 mx-auto">
                             <h1 id="page-name">Login</h1>
                             <p id="page-description">See your growth and get consulting support!</p>
