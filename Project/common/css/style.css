@@ -19,12 +19,14 @@
     --os-error-clr: #ff3333;
     --os-success-clr: #28a745;
     --os-meal-detail-clr: #999999;
+    --os-card-detail-clr: #A1A1A1;
 }
 
 
 html{
     height: 100%;
 }
+
 
 body{
     min-height: 100%;
@@ -217,7 +219,7 @@ header ul li a:hover {
     margin-top:50px; 
     margin-left:20px;
     margin-right:20px; 
-    max-width: 250px;
+    max-width: 300px;
 }
 
 .meal-image{
@@ -280,7 +282,140 @@ header ul li a:hover {
 }
 
 
+.card-background{
+    background-color: var(--os-white-clr);
+    border-radius: 10px;
+}
 
+.cart-body{
+    padding-top:80px;
+}
+
+.cart-item{
+    min-width: 412px;
+
+}
+
+
+
+.card-image{
+    border-radius: 65px;
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    float:left;
+}
+
+.items{
+    
+}
+
+.item-description{
+    float:left;
+}
+
+.item-count{
+}
+
+.item-description{
+    margin-top:10px;
+    margin-left:20px;
+}
+
+.item-description > .name{
+    margin-bottom:5px;
+    font-weight: 600;
+}
+
+.item-description > .price{
+    margin-top:-5px;
+}
+
+
+/*
+There is a bug overthere. 
+I couldn't relocate my container div. 
+I'll check soon. */
+
+#count{
+    width:29px;
+    text-align: center;
+    margin-top:20px;
+    margin-right:5px;
+    margin-left:50px;
+    display: inline-block;
+    float:left;
+}
+
+.delete-item{
+    margin-top:-10px;
+}
+
+#title {
+    font-size: 22px;
+    margin-bottom:0;
+    font-weight: 500;
+}
+
+#costs{
+    font-size: 25px;
+    margin-bottom:0;
+    font-weight: 700;
+}
+
+.total-cost{
+    padding-bottom:20px;
+}
+
+.delivery-card{
+    background-color: var(--os-navy-blue-clr);
+    border-radius: 9px;
+    padding:20px;
+    margin-top:40px;
+}
+
+.delivery-info{
+    padding-left:5%;
+    padding-right:5%;
+    text-align: center;
+}
+.delivery-icon{
+    margin-left:10%;
+}
+
+.delivery-icon > img{
+    float: left;
+    
+}
+
+.delivery-texts{
+    max-width:130px;
+    display: inline-block;
+    margin-left:15px;
+}
+
+.delivery-text{
+    color: var(--os-card-detail-clr);
+    margin-top:5px;
+    margin-bottom:0px;
+    font-size:16px;
+
+}
+
+
+.delivery-time{
+    color: var(--os-white-clr);
+    margin-bottom:5px;
+    font-size:20px;
+}
+
+.go-to-order-button{
+    height:50px;
+}
+
+.action-button > a:hover{
+    text-decoration: none;
+}
 
 
 
