@@ -31,6 +31,25 @@ class Cart{
             header("Location:" . $_SERVER['PHP_SELF']);
         }
     }
+    
+    public function getCurrentCart($userId){
+        $query = "SELECT * FROM cart WHERE $userId = ? AND current_cart = 0";
+        $stmt = mysqli_stmt_init($this->db->con);
+
+        if(!mysqli_stmt_prepare($stmt, $query)){
+            header("Location: index.php?sqlerror");
+            exit();
+        }
+        else{
+            mysqli_stmt_bind_param($stmt, "i", $userId);
+            mysqli_stmt_execute($stmt);
+
+            $result = mysqli_stmt_get_result($stmt);
+            $row = mysqli_fetch_assoc($result);
+
+            return $row;
+        }
+    }
 
     public function getCart($cartId){
         $query = "SELECT * FROM cartItems WHERE cart_id = ?";
