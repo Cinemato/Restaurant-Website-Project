@@ -61,6 +61,24 @@ if(isset($_POST['register-submit']))
 
                     mysqli_stmt_bind_param($stmt, "sss", $name, $email, $hashPass);
                     mysqli_stmt_execute($stmt);
+                    
+                    $sql = "SELECT * FROM users WHERE email = ?";
+                    $stmt = mysqli_stmt_init($db->con);
+
+                    if(!mysqli_stmt_prepare($stmt, $sql)){
+                        header("Location: ../register.php?error=sqlerror");
+                        exit();
+                    }
+                    else
+                    {
+                        mysqli_stmt_bind_param($stmt, "s", $email);
+                        mysqli_stmt_execute($stmt);
+
+                        $result = mysqli_stmt_get_result($stmt);
+                        $row = mysqli_fetch_assoc($result);
+
+                        $cart->newCart($row['user_id']);
+                    }
 
                     header("Location: ../login.php?signup=success&mail=".$email."&name=".$name);
                     exit();
