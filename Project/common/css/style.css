@@ -18,6 +18,7 @@
     --os-text-field-backgroud-clr: #FFFFFF;
     --os-error-clr: #ff3333;
     --os-success-clr: #28a745;
+    --os-meal-detail-clr: #999999;
 }
 
 
@@ -27,6 +28,7 @@ html{
 
 body{
     min-height: 100%;
+    background-color:var(--os-bg-clr);
 }
 
 header{
@@ -196,6 +198,79 @@ header ul li a:hover {
 .right-panel{
     background-color:var(--os-action-clr);
 }
+
+.page-head-tag{
+    margin-left:20px;
+    font-size:32px;
+    font-weight: 700;
+}
+
+.meal-card{
+    margin-top:50px; 
+    margin-left:20px;
+    margin-right:20px; 
+    max-width: 250px;
+}
+
+.meal-image{
+    width:125px;
+    height:125px;
+    border-radius: 125px;
+    background-color: var(--os-action-clr);
+    margin: auto;
+}
+
+.meal-image > img{
+    display: block;
+    margin: 0 auto;
+    border-radius: 125px;
+    width: 125px;
+    height: 125px;
+    object-fit: cover;
+
+}
+
+.meal-details{
+    margin-top:12px;
+    padding-top:15px;
+    padding-left: 15px;
+    padding-right:15px;
+    text-align:center;
+    background-color: var(--os-white-clr);
+    border-radius: 20px;
+}
+.meal-name{
+    margin-top:10px;
+    font-size:20px;
+    font-weight: 800;
+    line-height:20px;
+}
+
+.meal-description{
+    color:var(--os-meal-detail-clr);
+    font-size:12px;
+    font-weight:300;
+    margin-top:15px;
+    margin-bottom:0px;
+    line-height:15px;
+}
+
+.meal-price{
+    font-size: 30px;
+    margin-bottom:0px;
+    font-weight:600;
+    margin-top:4px;
+}
+
+
+
+.add-cart-button{
+    padding-left: 10px !important;
+    padding-right:10px !important;
+    margin-bottom: 20px;
+    margin-top:13px;
+}
+
 
 
 
