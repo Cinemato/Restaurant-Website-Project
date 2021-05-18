@@ -115,6 +115,14 @@ header ul li a:hover {
     border-radius: 5px;
     width:100%;
     height:40px;
+    padding: 5px;
+    outline: none;
+    outline-width: 0;
+    transition: border 0.25s;
+}
+
+.text-field-input:focus{
+    border: 2px solid var(--os-action-clr);
 }
 
 .name-surname-textfield{

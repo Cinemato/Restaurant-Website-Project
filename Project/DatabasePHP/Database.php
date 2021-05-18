@@ -10,7 +10,7 @@ class Database{
     public function __construct(){
         $this->con = mysqli_connect($this->host, $this->user, $this->password, $this->name);
         
-        if(!this->con)
+        if(!$this->con)
             echo ("Connection Failed" . mysqli_connect.error());
     }
 }

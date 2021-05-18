@@ -2,7 +2,7 @@
 class User{
     public $db = null;
 
-    public function __construct(DBController $db)
+    public function __construct(Database $db)
     {
         if(!$db->con) return null;
 

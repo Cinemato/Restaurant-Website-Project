@@ -4,7 +4,7 @@ if(isset($_POST['login-submit']))
     require('objects.php');
 
     $email = $_POST['email'];
-    $pass = $_POST['pass'];
+    $pass = $_POST['password'];
 
     if(empty($email) || empty($pass))
     {

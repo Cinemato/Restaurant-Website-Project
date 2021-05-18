@@ -29,7 +29,7 @@ if(isset($_POST['register-submit']))
 
         if(!mysqli_stmt_prepare($stmt, $sql))
         {
-            header("Location: ../register.php?error=sqlerror");
+            header("Location: register.php?error=sqlerror");
             exit();
         }
         else

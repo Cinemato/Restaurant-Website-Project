@@ -2,17 +2,27 @@
 include('Partial-Files/header.php')
 ?>
 <body>
-<?php
-    if(isset($_GET['signup']))
-    {
-        echo '<p class="success">Registration Successful! You Can Login Now!</p>';
-    }
-?>
     <section class="login-panel">
         <div class="row no-gutters">
             <div class="col-6 panel left-panel vh-100";>
                 <div class="left-panel-container">
                     <div class="col-12">
+                    <?php
+                    if(isset($_GET['signup']))
+                    {
+                        echo '<p class="success">Registration Successful! You Can Login Now!</p>';
+                    }
+
+                    if(isset($_GET['error']))
+                    {
+                        if($_GET['error'] == "emptyfields")
+                            echo '<p class="error">Required Fields Are Empty!</p>';
+                        else if($_GET['error'] == "wrongmail")
+                            echo '<p class="error">This email does not belong to any account!</p>';
+                        else if($_GET['error'] == "wrongpass")
+                            echo '<p class="error">Wrong Password!</p>';
+                    }
+                    ?>
                         <div class="col-6 mx-auto">
                             <h1 id="page-name">Login</h1>
                             <p id="page-description">See your growth and get consulting support!</p>
@@ -27,17 +37,17 @@ include('Partial-Files/header.php')
                                 </div>    
                                 <div class="password-textfield">
                                     <label for="password" class="text-field-text">Password*</label><br>
-                                    <input type="text" id="password" name="password" class="text-field-input"><br>
+                                    <input type="password" id="password" name="password" class="text-field-input"><br>
                                 </div>   
                                 <div class="forget-password">
                                     <p class="link-redirector link-redirector-right">
                                         <a href="#">Forget password?</a>
                                     </p>
                                 </div>  
-                                <button type="submit" class="action-button"><a href="#">Login</a></button>
+                                <button type="submit" class="action-button" name="login-submit">Login</button>
                                 <div class="forget-password">
                                     <p class="link-redirector link-redirector-left">    
-                                        Not registered yet? <a href="#">Create an account.</a>
+                                        Not registered yet? <a href="register.php">Create an account.</a>
                                     </p>
                                 </div>  
                             </form>
