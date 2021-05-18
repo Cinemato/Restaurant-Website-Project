@@ -46,7 +46,7 @@
 
     <div class="container-fluid">
         <div class="row" style="margin-top:50px;">
-            <div class="col-8">
+            <div class="col-9">
                 <div class="col-12">
                     <p class="page-head-tag">Popular Dishes</p>
                 </div>
@@ -211,80 +211,91 @@
                     </div>
                 </div>
             </div>
-            <div class="col-4">
-                <div class="col-10 mx-auto" style="background-color: white; padding-top:50px; border-radius: 10px;">
-                        <div class="col-12" style="padding-top:50px; ">
-                            <div class="cart">
+            <div class="col-3">
+                <div class="col-10 mx-auto no-gutters">
+                    <div class="card-background">
+                        <div class="col-12">
+                            <div class="cart-body">
                                 <h1>Cart</h1>
                                 <div class="items">
                                     <div class="cart-item">
-                                        <div class="card-image"><img src class="card-image"></div>
+                                        <div class="card-image"><img src="../common/img/meal.jpg" class="card-image"></div>
                                         <div class="item-description">
                                             <p class="name"> 2 x Chicken Menu</p>
                                             <p class="price"> $10.00</p>
                                         </div>
-                                        <div class="item-count">
-                                            // text field midir nedir bilmiyom
-                                            <button class="delete-item">X</button>
-                                        </div>
-                                    </div><br>
-                                    <div class="cart-item">
-                                        <div class="card-image"><img src class="card-image"></div>
-                                        <div class="item-description">
-                                            <p class="name"> 2 x Chicken Menu</p>
-                                            <p class="price"> $10.00</p>
-                                        </div>
-                                        <div class="item-count">
-                                            // text field midir nedir bilmiyom
-                                            <button class="delete-item">X</button>
-                                        </div>
-                                    </div><br>
-                                    <div class="cart-item">
-                                        <div class="card-image"><img src class="card-image"></div>
-                                        <div class="item-description">
-                                            <p class="name"> 2 x Chicken Menu</p>
-                                            <p class="price"> $10.00</p>
-                                        </div>
-                                        <div class="item-count">
-                                            // text field midir nedir bilmiyom
-                                            <button class="delete-item">X</button>
-                                        </div>
-                                    </div><br>
-                                    <div class="cart-item">
-                                        <div class="card-image"><img src class="card-image"></div>
-                                        <div class="item-description">
-                                            <p class="name"> 2 x Chicken Menu</p>
-                                            <p class="price"> $10.00</p>
-                                        </div>
-                                        <div class="item-count">
-                                            // text field midir nedir bilmiyom
-                                            <button class="delete-item">X</button>
-                                        </div>
-                                    </div><br>
-                                </div>
 
+                                        <div class="" style="margin-left:50px;">
+                                            <input type="text" id="count" name="count"  style="float: left;"value="1"><br>
+                                            <button class="delete-item" style="">X</button>
+                                        </div>
+                                    </div><br>
+                                    <div class="cart-item">
+                                        <div class="card-image"><img src="../common/img/meal.jpg" class="card-image"></div>
+                                        <div class="item-description">
+                                            <p class="name"> 2 x Chicken Menu</p>
+                                            <p class="price"> $10.00</p>
+                                        </div>
+
+                                        <div class="" style="margin-left:50px;">
+                                            <input type="text" id="count" name="count"  style="float: left;"value="1"><br>
+                                            <button class="delete-item" style="">X</button>
+                                        </div>
+                                    </div><br>
+                                    <div class="cart-item">
+                                        <div class="card-image"><img src="../common/img/meal.jpg" class="card-image"></div>
+                                        <div class="item-description">
+                                            <p class="name"> 2 x Chicken Menu</p>
+                                            <p class="price"> $10.00</p>
+                                        </div>
+
+                                        <div class="" style="margin-left:50px;">
+                                            <input type="text" id="count" name="count"  style="float: left;"value="1"><br>
+                                            <button class="delete-item" style="">X</button>
+                                        </div>
+                                    </div><br>
+                                    <div class="cart-item">
+                                        <div class="card-image"><img src="../common/img/meal.jpg" class="card-image"></div>
+                                        <div class="item-description">
+                                            <p class="name"> 2 x Chicken Menu</p>
+                                            <p class="price"> $10.00</p>
+                                        </div>
+
+                                        <div class="" style="margin-left:50px;">
+                                            <input type="text" id="count" name="count"value="1"><br>
+                                            <button class="delete-item">x</button>
+                                        </div>
+                                    </div><br>
+                                    
+                                </div>
                                 <hr>
-                                <div class="delivery-cost ">
-                                    <p>Delivery Cost:</p>
-                                    <p>$10.00</p>
+                                <div class="delivery-cost">
+                                    <p id="title">Delivery Cost:</p>
+                                    <p id="costs">$10.00</p>
                                 </div>    
                                 <hr>  
                                 <div class="total-cost">
-                                    <p>TOTAL: </p>
-                                    <p>$10.00</p>
+                                    <p id="title">TOTAL: </p>
+                                    <p id="costs">$10.00</p>
                                 </div>                             
                             </div>
                         </div>
-                        <div class="col-12" style="height:100px; background-color:rgb(15, 0, 100);">
-                           <div class="delivery-icon"><img src=""></div>
-                           <div class="delivery-texts">
-                               <p class="delivery-text">Delivery</p>
-                               <p class="delivery-time"> 30-40 min.</p>
-                           </div>
-                        </div> <br>
-                        <div class="col-12">
-                            <button type="submit" class="action-button"><a href="cart.html">Go To Order</a></button>
-                        </div> <br>
+                    </div>
+                    <div class="col-12">
+                        <div class="delivery-card">
+                            <div class="delivery-info">
+                                <div class="delivery-icon"><img src="../common/img/food-delivery-50x50.png" /></div>
+                                <div class="delivery-texts">
+                                    <p class="delivery-text">Delivery time</p>
+                                    <p class="delivery-time"> 30-40 min.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                         <br>
+                     <div class="col-12">
+                         <button type="submit"  style="height:50px;"class="action-button"><a href="cart.html" id="go-to-order-button">Go To Order</a></button>
+                     </div> <br>
                 </div>
             </div>
         </div>
