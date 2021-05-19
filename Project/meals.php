@@ -1,5 +1,16 @@
 <?php
-include('Partial-Files/header.php')
+include('Partial-Files/header.php');
+
+if($_SERVER['REQUEST_METHOD'] == "POST"){
+    if(isset($_SESSION['user_id'])){
+        $currentCart = $cart->getCurrentCart($_SESSION['user_id']);
+        $cart->addToCart($currentCart['cart_id'], $_POST['product_id'], 1);
+        header("Location:" . $_SERVER['PHP_SELF']);
+    }
+    else{
+        header("Location: login.php?error=notloggedin");
+    }
+}
 ?>
 <body>
     <header>
@@ -50,12 +61,15 @@ include('Partial-Files/header.php')
                                 <div class="meal-image">
                                     <img src="<?php echo $product['product_image']?>">
                                 </div>
-                                <div class="meal-details">
-                                    <h4 class="meal-name"><?php echo $product['product_name']?></h4>
-                                    <p class="meal-description"><?php echo $product['product_desc']?></p>
-                                    <p class="meal-price"><?php echo '$' . $product['product_price']?></p>
-                                    <div class=".btn-clss"><button class="action-button add-cart-button" >Add Cart</button></div>
-                                </div>
+                                <form method="post">
+                                    <div class="meal-details">
+                                        <h4 class="meal-name"><?php echo $product['product_name']?></h4>
+                                        <p class="meal-description"><?php echo $product['product_desc']?></p>
+                                        <p class="meal-price"><?php echo '$' . $product['product_price']?></p>
+                                        <input type="hidden" name="product_id" value="<?php echo $product['product_id']?>">
+                                        <div class=".btn-clss"><input type="submit" class="action-button add-cart-button" value = "Add Cart"></div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
 
@@ -65,6 +79,10 @@ include('Partial-Files/header.php')
                     </div>
                 </div>
             </div>
+            <?php
+                if(isset($_SESSION['user_id'])) {
+                    $cartItems = $cart->getCurrentCartItems();
+            ?>
             <div class="col-3">
                 <div class="col-10 mx-auto no-gutters">
                     <div class="card-background">
@@ -72,11 +90,16 @@ include('Partial-Files/header.php')
                             <div class="cart-body">
                                 <h1>Cart</h1>
                                 <div class="items">
+                                    <?php
+                                        foreach($cartItems as $item){
+                                            $product = $products->getProduct($item['product_id']);
+
+                                    ?>
                                     <div class="cart-item">
                                         <div class="card-image"><img src="common/img/meal.jpg" class="card-image"></div>
                                         <div class="item-description">
-                                            <p class="name"> 2 x Chicken Menu</p>
-                                            <p class="price"> $10.00</p>
+                                            <p class="name"><?php echo $product['product_name']?></p>
+                                            <p class="price"><?php echo $product['product_price']?></p>
                                         </div>
 
                                         <div class="" style="margin-left:50px;">
@@ -84,43 +107,9 @@ include('Partial-Files/header.php')
                                             <button class="delete-item" style="">X</button>
                                         </div>
                                     </div><br>
-                                    <div class="cart-item">
-                                        <div class="card-image"><img src="common/img/meal.jpg" class="card-image"></div>
-                                        <div class="item-description">
-                                            <p class="name"> 2 x Chicken Menu</p>
-                                            <p class="price"> $10.00</p>
-                                        </div>
-
-                                        <div class="" style="margin-left:50px;">
-                                            <input type="text" id="count" name="count"  style="float: left;"value="1"><br>
-                                            <button class="delete-item" style="">X</button>
-                                        </div>
-                                    </div><br>
-                                    <div class="cart-item">
-                                        <div class="card-image"><img src="common/img/meal.jpg" class="card-image"></div>
-                                        <div class="item-description">
-                                            <p class="name"> 2 x Chicken Menu</p>
-                                            <p class="price"> $10.00</p>
-                                        </div>
-
-                                        <div class="" style="margin-left:50px;">
-                                            <input type="text" id="count" name="count"  style="float: left;"value="1"><br>
-                                            <button class="delete-item" style="">X</button>
-                                        </div>
-                                    </div><br>
-                                    <div class="cart-item">
-                                        <div class="card-image"><img src="common/img/meal.jpg" class="card-image"></div>
-                                        <div class="item-description">
-                                            <p class="name"> 2 x Chicken Menu</p>
-                                            <p class="price"> $10.00</p>
-                                        </div>
-
-                                        <div class="" style="margin-left:50px;">
-                                            <input type="text" id="count" name="count"value="1"><br>
-                                            <button class="delete-item">X</button>
-                                        </div>
-                                    </div><br>
-                                    
+                                    <?php
+                                        }
+                                    ?>
                                 </div>
                                 <hr>
                                 <div class="delivery-cost">
@@ -152,6 +141,9 @@ include('Partial-Files/header.php')
                      </div> <br>
                 </div>
             </div>
+            <?php
+                }
+            ?>
         </div>
     </div>
 </body>

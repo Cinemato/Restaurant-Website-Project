@@ -74,5 +74,18 @@ class Cart{
             return $rows;
         }
     }
+
+    public function getCurrentCartItems(){
+        $cart = $this->getCurrentCart($_SESSION['user_id']);
+        return $this->getCart($cart['cart_id']);
+    }
+
+    public function switchCurrentCart(){
+        $cart = $this->getCurrentCart($_SESSION['user_id']);
+        $id = $cart['cart_id'];
+        $query = "UPDATE cart SET current_cart = 1 WHERE cart_id = {$id}";
+
+        return $query;
+    }
 }
 ?>
