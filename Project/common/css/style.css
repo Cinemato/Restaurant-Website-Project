@@ -604,3 +604,29 @@ I'll check soon. */
 .previous-orders{
    padding-bottom:100px;
 }
+
+
+.contact-us{
+    margin-top:100px;
+}
+
+.feedback-title{
+    margin-top:30px;
+}
+
+.feedback-content{
+    margin-top:20px;
+}
+
+#feedback-content{
+    height:100px;
+    width:100%;
+    border:none;
+    resize: unset;
+    height:auto;
+    background-color: var(--os-white-clr);
+    border-radius: 5px;
+    height:120px;
+    padding-left:20px;
+    padding-top:10px;
+}
