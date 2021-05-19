@@ -95,7 +95,7 @@ header ul li a:hover {
 
 
 
-.col-m6{
+.col-m6, .col-9{
     padding-left: 0 !important;
     padding-right:0 !important;
 }
@@ -205,6 +205,21 @@ header ul li a:hover {
 
 .link-redirector-left{
     text-align: left;
+}
+
+.feedback-link{
+    background-color: var(--os-action-clr);
+    padding-left:15px;
+    padding-right:15px;
+    padding-top:10px;
+    padding-bottom:10px;
+    border-radius: 4px;
+    color:var(--os-white-clr);
+
+}
+.feedback-link:hover{
+    color:var(--os-white-clr);
+    text-decoration: none;
 }
 
 .error{
@@ -576,4 +591,16 @@ I'll check soon. */
     font-size:16px;
     border-radius:5px;
     border:none;
+}
+
+.profile-settings{
+    margin-top:100px;
+}
+
+.user-name, .user-surname, .user-mail, .user-phone-number, .user-address{
+    margin-bottom:15px;
+}
+
+.previous-orders{
+   padding-bottom:100px;
 }
