@@ -10,45 +10,68 @@ class Cart{
         $this->allProducts = $allProducts;
     }
 
-    public function addToCart($userId, $productId, $qty){
-        if($userId != null && $productId != null){
-            $query = $this->db->con->query("INSERT INTO cart(user_id, product_id, product_quantity) VALUES ({$userId}, {$productId}, {$qty})");
-            header("Location:" . $_SERVER['PHP_SELF']);
+    public function newCart($userId){
+        if($userId != null){
+            $query = $this->db->con->query("INSERT INTO cart(user_id) VALUES ({$userId})");
             return $query;
-        }     
-    }
-
-    public function removeProduct($productId, $userId){
-        if($userId != null && $productId != null){
-            $query = $this->db->con->query("DELETE FROM cart WHERE product_id = {$productId} AND user_id = {$userId}");
-            header("Location:" . $_SERVER['PHP_SELF']);
         }
     }
 
-    public function getCart($userId)
-    {
-        $query = "SELECT * FROM cart WHERE user_id = ?";
+    public function addToCart($cartId, $productId, $qty){
+        if($cartId != null && $productId != null && $qty != null){
+           $query = $this->db->con->query("INSERT INTO cartItems(product_id, quantity, cart_id) VALUES({$productId}, {$qty}, {$cartId})");
+           header("Location:" . $_SERVER['PHP_SELF']);
+           return $query;
+        }     
+    }
+    
+    public function removeProduct($cartItemId){
+        if($cartItemId != null){
+            $query = $this->db->con->query("DELETE FROM cartItems WHERE cartItem_id = {$cartItemId}");
+            header("Location:" . $_SERVER['PHP_SELF']);
+        }
+    }
+    
+    public function getCurrentCart($userId){
+        $query = "SELECT * FROM cart WHERE $userId = ? AND current_cart = 0";
         $stmt = mysqli_stmt_init($this->db->con);
 
-        if(!mysqli_stmt_prepare($stmt, $query))
-        {
+        if(!mysqli_stmt_prepare($stmt, $query)){
+            header("Location: index.php?sqlerror");
+            exit();
+        }
+        else{
+            mysqli_stmt_bind_param($stmt, "i", $userId);
+            mysqli_stmt_execute($stmt);
+
+            $result = mysqli_stmt_get_result($stmt);
+            $row = mysqli_fetch_assoc($result);
+
+            return $row;
+        }
+    }
+
+    public function getCart($cartId){
+        $query = "SELECT * FROM cartItems WHERE cart_id = ?";
+        $stmt = mysqli_stmt_init($this->db->con);
+
+        if(!mysqli_stmt_prepare($stmt, $query)){
             header("Location: index.php?sqlerror");
             exit();
         }
         else
         {
-            mysqli_stmt_bind_param($stmt, "s", $userId);
+            mysqli_stmt_bind_param($stmt, "i", $cartId);
             mysqli_stmt_execute($stmt);
             $result = mysqli_stmt_get_result($stmt);
 
-            $cartArray = array();
+            $rows = array();
 
-            while($row = mysqli_fetch_assoc($result))
-            {
-                $cartArray[] = $row;
+            while($row = mysqli_fetch_assoc($result)){
+                $rows[] = $row;
             }
 
-            return $cartArray;
+            return $rows;
         }
     }
 }
