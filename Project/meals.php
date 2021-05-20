@@ -2,9 +2,13 @@
 include('Partial-Files/header.php');
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-    if(isset($_SESSION['user_id'])){
+    if(isset($_POST['add'])){
         $currentCart = $cart->getCurrentCart($_SESSION['user_id']);
         $cart->addToCart($currentCart['cart_id'], $_POST['product_id'], 1);
+        header("Location:" . $_SERVER['PHP_SELF']);
+    }
+    else if(isset($_POST['delete'])){
+        $cart->removeProduct($cart->getItem($_POST['product_id'])['cartItem_id']);
         header("Location:" . $_SERVER['PHP_SELF']);
     }
     else{
@@ -67,7 +71,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                         <p class="meal-description"><?php echo $product['product_desc']?></p>
                                         <p class="meal-price"><?php echo '$' . $product['product_price']?></p>
                                         <input type="hidden" name="product_id" value="<?php echo $product['product_id']?>">
-                                        <div class=".btn-clss"><input type="submit" class="action-button add-cart-button" value = "Add Cart"></div>
+                                        <?php if(!$cart->inCart($product['product_id'])) {?>
+                                        <div class=".btn-clss"><input type="submit" class="action-button add-cart-button" value = "Add Cart" name="add"></div>
+                                        <?php } else{?>
+                                        <div class=".btn-clss"><input type="submit" class="action-button add-cart-button" disabled style="background: limegreen" value = "Added"></div>        
+                                        <?php }?>
                                     </div>
                                 </form>
                             </div>
@@ -96,16 +104,19 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
                                     ?>
                                     <div class="cart-item">
-                                        <div class="card-image"><img src="common/img/meal.jpg" class="card-image"></div>
-                                        <div class="item-description">
-                                            <p class="name"><?php echo $product['product_name']?></p>
-                                            <p class="price"><?php echo $product['product_price']?></p>
-                                        </div>
+                                        <form method="post">
+                                            <div class="card-image"><img src="common/img/meal.jpg" class="card-image"></div>
+                                            <div class="item-description">
+                                                <p class="name"><?php echo $product['product_name']?></p>
+                                                <p class="price"><?php echo "$" . $product['product_price']?></p>
+                                                <input type="hidden" name="product_id" value="<?php echo $product['product_id']?>">
+                                            </div>
 
-                                        <div class="" style="margin-left:50px;">
-                                            <input type="text" id="count" name="count"  style="float: left;"value="1"><br>
-                                            <button class="delete-item" style="">X</button>
-                                        </div>
+                                            <div class="" style="margin-left:50px;">
+                                                <input type="text" id="count" name="count"  style="float: left;"value="1"><br>
+                                                <input type = "submit" value = "X" name="delete" class="delete-item">
+                                            </div>
+                                        </form> 
                                     </div><br>
                                     <?php
                                         }
@@ -119,7 +130,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                 <hr>  
                                 <div class="total-cost">
                                     <p id="title">TOTAL: </p>
-                                    <p id="costs">$10.00</p>
+                                    <p id="costs"><?php echo "$" . $cart->getTotal()?></p>
                                 </div>                             
                             </div>
                         </div>

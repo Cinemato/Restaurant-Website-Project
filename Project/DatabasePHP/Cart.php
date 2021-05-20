@@ -1,13 +1,13 @@
 <?php
 class Cart{
     public $db = null;
-    public $allProducts = null;
+    public $products = null;
 
-    public function __construct(Database $db, Products $allProducts){
+    public function __construct(Database $db, Products $products){
         if(!$db->con) return null;
 
         $this->db = $db;
-        $this->allProducts = $allProducts;
+        $this->products = $products;
     }
 
     public function newCart($userId){
@@ -83,9 +83,41 @@ class Cart{
     public function switchCurrentCart(){
         $cart = $this->getCurrentCart($_SESSION['user_id']);
         $id = $cart['cart_id'];
-        $query = "UPDATE cart SET current_cart = 1 WHERE cart_id = {$id}";
+        $query = $this->db->con->query("UPDATE cart SET current_cart = 1 WHERE cart_id = {$id}");
 
         return $query;
+    }
+
+    public function getTotal(){
+        $sum = 0;
+
+        $cart = $this->getCurrentCartItems();
+
+        foreach($cart as $cartProduct){
+            $product = $this->products->getProduct($cartProduct['product_id']);
+            $sum += $product['product_price'] * $cartProduct['quantity'];
+        }
+
+        return $sum;
+    }
+
+    public function inCart($productId){
+        $cartId = $this->getCurrentCart($_SESSION['user_id'])['cart_id'];
+        $query = $this->db->con->query("SELECT * FROM cartItems WHERE product_id = {$productId} AND cart_id = {$cartId}");
+        if(mysqli_num_rows($query) > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function getItem($productId){
+        $cartId = $this->getCurrentCart($_SESSION['user_id'])['cart_id'];
+        $query = $this->db->con->query("SELECT * FROM cartItems WHERE product_id = {$productId} AND cart_id = {$cartId}");
+        $row = mysqli_fetch_assoc($query);
+
+        return $row;
     }
 }
 ?>
