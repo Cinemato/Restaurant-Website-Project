@@ -37,7 +37,7 @@ class Cart{
         $stmt = mysqli_stmt_init($this->db->con);
 
         if(!mysqli_stmt_prepare($stmt, $query)){
-            header("Location: index.php?sqlerror");
+            header("Location: login.php?sqlerror");
             exit();
         }
         else{
@@ -56,7 +56,7 @@ class Cart{
         $stmt = mysqli_stmt_init($this->db->con);
 
         if(!mysqli_stmt_prepare($stmt, $query)){
-            header("Location: index.php?sqlerror");
+            header("Location: login.php?sqlerror");
             exit();
         }
         else

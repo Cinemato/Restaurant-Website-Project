@@ -582,7 +582,7 @@ header ul li a:hover {
     padding-bottom:100px;
 }
 
-.checkout-button > button{
+.checkout-button > button, .checkout-button > .complete-checkout{
     background-color: var(--os-action-clr);
     height:50px;
     width:100%;

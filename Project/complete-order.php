@@ -8,38 +8,7 @@ if(isset($_POST['delete'])){
 
 ?>
 <body>
-    <header>
-        <div class="row">
-            <div class="col-3">
-                <div class="col-6 mx-auto">
-                    <div class="header-logo">
-                        <a href="#">Company Logo<img src="" class="company-logo"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-9">
-                <div class="col-9 mx-auto my-auto ">
-                    <div class="header-menu">
-                        <ul>
-                            <li>
-                                <a href="#">Meals</a>
-                            </li>
-                            <li>
-                                <a href="#">Cart</a>
-                            </li>
-                            <li>
-                                <a href="#">Contact</a>
-                            </li>
-                            <li>
-                                <a href="#">Profile</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
+    <?php include('Partial-Files/nav.php');?>
     <div class="container-fluid">
         <section class="checkout-cart"> 
             <div class="col-12">

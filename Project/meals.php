@@ -2,53 +2,23 @@
 include('Partial-Files/header.php');
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-    if(isset($_POST['add'])){
+    if(isset($_POST['add']) && isset($_SESSION['user_id'])){
         $currentCart = $cart->getCurrentCart($_SESSION['user_id']);
         $cart->addToCart($currentCart['cart_id'], $_POST['product_id'], 1);
         header("Location:" . $_SERVER['PHP_SELF']);
     }
+    else if(isset($_POST['add']) && !isset($_SESSION['user_id'])){
+        header("Location: login.php?error=notloggedin");
+    }
+    
     else if(isset($_POST['delete'])){
         $cart->removeProduct($cart->getItem($_POST['product_id'])['cartItem_id']);
         header("Location:" . $_SERVER['PHP_SELF']);
     }
-    else{
-        header("Location: login.php?error=notloggedin");
-    }
 }
 ?>
 <body>
-    <header>
-        <div class="row">
-            <div class="col-3">
-                <div class="col-6 mx-auto">
-                    <div class="header-logo">
-                        <a href="#">Company Logo<img src="" class="company-logo"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-9">
-                <div class="col-9 mx-auto my-auto">
-                    <div class="header-menu">
-                        <ul>
-                            <li>
-                                <a href="#">Meals</a>
-                            </li>
-                            <li>
-                                <a href="#">Cart</a>
-                            </li>
-                            <li>
-                                <a href="#">Contact</a>
-                            </li>
-                            <li>
-                                <a href="#">Profile</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
+    <?php include('Partial-Files/nav.php');?>
     <div class="container-fluid">
         <div class="row" style="margin-top:50px;">
             <div class="col-9">
@@ -71,10 +41,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                         <p class="meal-description"><?php echo $product['product_desc']?></p>
                                         <p class="meal-price"><?php echo '$' . $product['product_price']?></p>
                                         <input type="hidden" name="product_id" value="<?php echo $product['product_id']?>">
-                                        <?php if(!$cart->inCart($product['product_id'])) {?>
+                                        <?php if(isset($_SESSION['user_id'])){
+                                                if(!$cart->inCart($product['product_id']) ) {
+                                        ?>
                                         <div class=".btn-clss"><input type="submit" class="action-button add-cart-button" value = "Add Cart" name="add"></div>
                                         <?php } else{?>
                                         <div class=".btn-clss"><input type="submit" class="action-button add-cart-button" disabled style="background: limegreen" value = "Added"></div>        
+                                        <?php }} else{ ?>
+                                        <div class=".btn-clss"><input type="submit" class="action-button add-cart-button" value = "Add Cart" name="add"></div>
                                         <?php }?>
                                     </div>
                                 </form>
