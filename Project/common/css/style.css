@@ -325,8 +325,8 @@ header ul li a:hover {
 }
 
 .cart-item{
-    min-width: 412px;
-
+    width:100%;
+    overflow: auto;
 }
 
 .card-image{
@@ -351,6 +351,7 @@ header ul li a:hover {
 .item-description{
     margin-top:10px;
     margin-left:20px;
+    float:left;
 }
 
 .item-description > .name{
@@ -363,19 +364,12 @@ header ul li a:hover {
 }
 
 
-/*
-There is a bug overthere. 
-I couldn't relocate my container div. 
-I'll check soon. */
-
 #count{
     width:29px;
     text-align: center;
     margin-top:20px;
     margin-right:5px;
     margin-left:50px;
-    display: inline-block;
-    float:left;
 }
 
 .delete-item{
