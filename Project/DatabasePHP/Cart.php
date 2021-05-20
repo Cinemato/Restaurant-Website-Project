@@ -33,7 +33,7 @@ class Cart{
     }
     
     public function getCurrentCart($userId){
-        $query = "SELECT * FROM cart WHERE $userId = ? AND current_cart = 0";
+        $query = "SELECT * FROM cart WHERE user_id = ? AND current_cart = 0";
         $stmt = mysqli_stmt_init($this->db->con);
 
         if(!mysqli_stmt_prepare($stmt, $query)){
