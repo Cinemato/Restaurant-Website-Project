@@ -519,16 +519,21 @@ header ul li a:hover {
 
 #adress-area{
     width:100%;
-    border:none;
+    border: 0px solid white;
     resize: unset;
     height:auto;
     background-color: var(--os-white-clr);
+    outline: none;
     border-radius: 20px;
     height:120px;
     padding-left:20px;
     padding-top:10px;
+    transition: border 0.25s;
 }
 
+#adress-area:focus{
+    border: 2px solid var(--os-action-clr);
+}
 
 .button-group{
     margin-top:30px;

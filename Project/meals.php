@@ -99,13 +99,15 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                 <h1>Cart</h1>
                                 <div class="items">
                                     <?php
+                                    if(count($cartItems) < 1){
+                                        echo "<h4>The cart is empty!</h4>";
+                                    }
                                         foreach($cartItems as $item){
                                             $product = $products->getProduct($item['product_id']);
-
                                     ?>
                                     <div class="cart-item">
                                         <form method="post">
-                                            <div class="card-image"><img src="common/img/meal.jpg" class="card-image"></div>
+                                            <div class="card-image"><img src="<?php echo $product['product_image']?>" class="card-image"></div>
                                             <div class="item-description">
                                                 <p class="name"><?php echo $product['product_name']?></p>
                                                 <p class="price"><?php echo "$" . $product['product_price']?></p>
@@ -113,7 +115,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                             </div>
 
                                             <div class="" style="margin-left:50px;">
-                                                <input type="text" id="count" name="count"  style="float: left;"value="1"><br>
+                                                <input type="number" id="count" name="<?php echo "count" . $item['cartItem_id']?>?>" style="float: left;" value="1" min="1"><br>
                                                 <input type = "submit" value = "X" name="delete" class="delete-item">
                                             </div>
                                         </form> 
@@ -122,19 +124,22 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                         }
                                     ?>
                                 </div>
+                                <?php if(count($cartItems) > 0){ ?>
                                 <hr>
                                 <div class="delivery-cost">
+                                    
                                     <p id="title">Delivery Cost:</p>
                                     <p id="costs">$10.00</p>
-                                </div>    
+                                </div>  
+                                <?php }?>  
                                 <hr>  
                                 <div class="total-cost">
                                     <p id="title">TOTAL: </p>
-                                    <p id="costs"><?php echo "$" . $cart->getTotal()?></p>
+                                    <p id="costs"><?php echo count($cartItems) > 0 ? "$" . $cart->getTotal() . " + $" . 10 : "$" . $cart->getTotal()?></p>
                                 </div>                             
                             </div>
                         </div>
-                    </div>
+                    </div>                   
                     <div class="col-12">
                         <div class="delivery-card">
                             <div class="delivery-info">
@@ -146,10 +151,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                             </div>
                         </div>
                     </div>
-                         <br>
-                     <div class="col-12">
-                         <button type="submit"  style="height:50px;"class="action-button"><a href="cart.html" id="go-to-order-button">Go To Order</a></button>
-                     </div> <br>
+                    <br>
+                    <?php if(count($cartItems) > 0){ ?>
+                    <div class="col-12">
+                        <form action="complete-order.php" method="post">
+                            <input type="submit" style="height:50px;" class="action-button" id="go-to-order-button" value="Go To Order">
+                        </form>     
+                    </div> <br>
+                    <?php }?>  
                 </div>
             </div>
             <?php
