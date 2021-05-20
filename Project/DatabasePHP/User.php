@@ -10,22 +10,22 @@ class User{
     }
 
 
-    public function updateUser($user_id, $first_name, $last_name, $address, $city, $phone)
+    public function updateUser($user_id, $name, $email, $address, $city, $phone)
     {
-        $query = "UPDATE users SET first_name = ?, last_name = ?, address = ?, city = ?, phone = ? WHERE user_id = ?";
+        $query = "UPDATE users SET name = ?, email = ?, address = ?, city = ?, phone = ? WHERE user_id = ?";
         $stmt = mysqli_stmt_init($this->db->con);
 
         if(!mysqli_stmt_prepare($stmt, $query))
         {
-            header("Location: account.php?sqlerror");
+            header("Location: profile.php?sqlerror");
             exit();
         }
         else
         {
-            mysqli_stmt_bind_param($stmt, "ssssss", $first_name, $last_name, $address, $city, $phone, $user_id);
+            mysqli_stmt_bind_param($stmt, "ssssss", $name, $email, $address, $city, $phone, $user_id);
             mysqli_stmt_execute($stmt);
 
-            header("Location: account.php?save=success");
+            header("Location: profile.php?save=success");
             exit();
         }
     }
@@ -37,7 +37,7 @@ class User{
 
         if(!mysqli_stmt_prepare($stmt, $query))
         {
-            header("Location: index.php?sqlerror");
+            header("Location: login.php?sqlerror");
             exit();
         }
         else
@@ -54,7 +54,7 @@ class User{
             }
             else
             {
-                header("Location: index.php?sqlerror");
+                header("Location: login.php?sqlerror");
                 exit();
             }
         }
