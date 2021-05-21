@@ -18,7 +18,7 @@
                                 <a href="complete-order.php">Cart</a>
                             </li>
                             <li>
-                                <a href="#">Contact</a>
+                                <a href="contact.php">Contact</a>
                             </li>
                             <li>
                                 <?php if(isset($_SESSION['user_id'])){?>
