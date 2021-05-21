@@ -10,6 +10,7 @@ else{
 }
 
 $profile = $user->getUser($_SESSION['user_id']);
+$orders = $order->getOrders($_SESSION['user_id']);
 ?>
 <body>
     <?php include('Partial-Files/nav.php')?>
@@ -22,7 +23,7 @@ $profile = $user->getUser($_SESSION['user_id']);
                             <?php
                             if(isset($_GET['save']))
                             {
-                                echo '<p class="success">Registration Successful! You Can Login Now!</p>';
+                                echo '<p class="success">Porfile Updated Successfully!</p>';
                             }
                             ?>
                             <p class="page-head-tag" style="margin-left: 0px;">Profile Settings</p>
@@ -70,41 +71,22 @@ $profile = $user->getUser($_SESSION['user_id']);
                       <th>Rating</th>
                       <th></th>
                     </tr>
+                    <?php foreach($orders as $userOrder) {
+                            $items = $cart->getCart($userOrder['cart_id']);
+                    ?>
                     <tr class="white-bordered-table-row">
-                      <td>Jill</td>
-                      <td>Smith</td>
-                      <td>Smith</td>
+                      <td><?php 
+                        for($i = 0; $i < count($items); $i++){
+                            echo $items[$i]['quantity'] . "x " . $products->getProduct($items[$i]['product_id'])['product_name'] . ($i != count($items) - 1 ? ", " : "");
+                        }
+                      ?></td>
+                      <td><?php echo $userOrder['date_created']?></td>
+                      <td><?php echo $userOrder['total']?></td>
                       <td>3.1/5</td>
                       <td><a class="link-redirector feedback-link" href="#">Give Feedback</button></td>
                     </tr>
-                    <tr class="white-bordered-table-row">
-                        <td>Jill</td>
-                        <td>Smith</td>
-                        <td>Smith</td>
-                        <td>3.1/5</td>
-                        <td><a class="link-redirector feedback-link" href="#">Give Feedback</button></td>
-                    </tr>
-                    <tr class="white-bordered-table-row">
-                      <td>Jill</td>
-                      <td>Smith</td>
-                      <td>Smith</td>
-                      <td>3.1/5</td>
-                      <td><a class="link-redirector feedback-link" href="#">Give Feedback</button></td>
-                    </tr>
-                    <tr class="white-bordered-table-row">
-                        <td>Jill</td>
-                        <td>Smith</td>
-                        <td>Smith</td>
-                        <td>3.1/5</td>
-                        <td><a class="link-redirector feedback-link" href="#">Give Feedback</button></td>
-                      </tr>
-                    <tr class="white-bordered-table-row">
-                        <td>Jill</td>
-                        <td>Smith</td>
-                        <td>Smith</td>
-                        <td>3.1/5</td>
-                        <td><a class="link-redirector feedback-link" href="#">Give Feedback</button></td>
-                    </tr>
+
+                    <?php }?>
                   </table>
             </div>
         </section>
