@@ -6,6 +6,10 @@ if(isset($_POST['delete'])){
     header("Location:" . $_SERVER['PHP_SELF']);
 }
 
+if(!isset($_SESSION['user_id'])){
+    header("Location: login.php?error=notloggedin");
+}
+
 ?>
 <body>
     <?php include('Partial-Files/nav.php');?>
@@ -48,6 +52,7 @@ if(isset($_POST['delete'])){
                 <p id="total-fee">Total: $35</p>
             </div>
         </section>
+        <form class="no-gutters" method="post" action="test.php">
         <section class="add-adress">
             <p class="page-head-tag">Address</p>   
             <div class="col-12 mx-auto no-gutters">
@@ -71,7 +76,7 @@ if(isset($_POST['delete'])){
             <p class="page-head-tag">Checkout</p>   
             <div class="col-6 no-gutters">   
                 <div class="col-6 no-gutters">
-                    <form class="no-gutters">
+                    
                         <div class="card-number">
                             <label for="email" class="text-field-text">Card Number*</label><br>
                             <input type="text" id="email" name="email" class="text-field-input"><br>
@@ -92,17 +97,15 @@ if(isset($_POST['delete'])){
                                 </div> 
                             </div>
                         </div>
-                        <div class="col-12 checkout-button no-gutters">
-                            <button class="complete-checkout" type="submit" method="">Checkout</button>
+                        <div action="test.php" method="post" class="col-12 checkout-button no-gutters">
+                            <button class="complete-checkout" name="checkout" type="submit">Checkout</button>
                         </div>
-                    </form>
+                    
                 </div>    
             </div>
         </section>
-
+        </form>
     </div>
-              
-
 
     <script>
         function increment() {
@@ -113,8 +116,5 @@ if(isset($_POST['delete'])){
         }
     </script>
 
-
-    
-    
 </body>
 </html>

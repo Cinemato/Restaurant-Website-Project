@@ -12,4 +12,7 @@ $cart = new Cart($db, $products); //Universal Cart Object
 
 require('User.php');
 $user = new User($db); //Universal User Object
+
+require('Order.php');
+$order = new Order($db, $cart);
 ?>
