@@ -15,9 +15,6 @@
                                 <a href="meals.php">Meals</a>
                             </li>
                             <li>
-                                <a href="complete-order.php">Cart</a>
-                            </li>
-                            <li>
                                 <a href="contact.php">Contact</a>
                             </li>
                             <li>

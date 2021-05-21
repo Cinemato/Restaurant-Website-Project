@@ -65,16 +65,17 @@ $orders = $order->getOrders($_SESSION['user_id']);
                 <p class="page-head-tag">Previous Orders</p>  
                 <table class="checkout-table">
                     <tr id="first-row">
+                      <th>Order ID</th>
                       <th>Food</th>
                       <th>Order Date</th>
                       <th>Sum</th>
-                      <th>Rating</th>
                       <th></th>
                     </tr>
                     <?php foreach($orders as $userOrder) {
                             $items = $cart->getCart($userOrder['cart_id']);
                     ?>
                     <tr class="white-bordered-table-row">
+                      <td><?php echo "#" . $userOrder['order_id']?></td>
                       <td><?php 
                         for($i = 0; $i < count($items); $i++){
                             echo $items[$i]['quantity'] . "x " . $products->getProduct($items[$i]['product_id'])['product_name'] . ($i != count($items) - 1 ? ", " : "");
@@ -82,7 +83,6 @@ $orders = $order->getOrders($_SESSION['user_id']);
                       ?></td>
                       <td><?php echo $userOrder['date_created']?></td>
                       <td><?php echo $userOrder['total']?></td>
-                      <td>3.1/5</td>
                       <td><a class="link-redirector feedback-link" href="#">Give Feedback</button></td>
                     </tr>
 
