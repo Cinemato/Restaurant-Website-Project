@@ -30,19 +30,19 @@
                         <form class="no-gutters" method="post" action="DatabasePHP/Message.db.php">
                             <div class="feedback-name">
                                 <label for="feedback-name" class="text-field-text">Name: </label><br>
-                                <input type="text" id="feedback-name" name="feedback-name" class="text-field-input"><br><br>
+                                <input type="text" id="feedback-name" name="feedback-name" class="text-field-input" value="<?php echo $_GET['name']?>"><br><br>
                             </div>
                             <div class="feedback-email">
                                 <label for="feedback-email" class="text-field-text">Email: </label><br>
-                                <input type="text" id="feedback-email" name="feedback-email" class="text-field-input"><br><br>   
+                                <input type="text" id="feedback-email" name="feedback-email" class="text-field-input" value="<?php echo $_GET['mail']?>"><br><br>   
                             </div>
                             <div class="feedback-subject">
                                 <label for="feedback-subject" class="text-field-text">Subject: </label><br>
-                                <input type="text" id="feedback-title" name="feedback-subject" class="text-field-input"><br>
+                                <input type="text" id="feedback-title" name="feedback-subject" class="text-field-input" value="<?php echo $_GET['subject']?>"><br>
                             </div> 
                             <div class="feedback-content">
                                 <label for="feedback-content" class="text-field-text">Message:  </label><br>
-                                <textarea name="feedback-content" id="feedback-content" rows="10" cols="30"></textarea>
+                                <textarea name="feedback-content" id="feedback-content" rows="10" cols="30"><?php echo $_GET['msg']?></textarea>
                             </div>
                             <div class="col-12 checkout-button no-gutters">
                                 <button class="complete-checkout" type="submit" name="msg">Send</button>
