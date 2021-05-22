@@ -457,12 +457,6 @@ header ul li a:hover {
     margin-bottom:10px;
 }
 
-.checkout-table tr{
-    /* I can't assign border radius 
-       I'll check it soon.
-    */
-}
-
 
 .checkout-table tr th{
     font-size:26px;
@@ -633,4 +627,28 @@ header ul li a:hover {
 
 #feedback-content:focus{
     border: 2px solid var(--os-action-clr);
+}
+
+.completed-background{
+    margin-top:200px;
+    text-align: center; 
+    background-color: chartreuse;
+    padding-bottom:30px;
+    padding-top: 30px;
+}
+
+.order-completed > img{
+    margin-left: 50%;
+}
+
+
+.order-completed-title{
+    font-size:32px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.order-id{
+    text-align: center;
+    font-size:25px;
 }
