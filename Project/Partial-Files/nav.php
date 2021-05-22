@@ -3,7 +3,7 @@
             <div class="col-3">
                 <div class="col-6 mx-auto">
                     <div class="header-logo">
-                        <a href="#">Company Logo<img src="" class="company-logo"></a>
+                        <a href="meals.php">Company Logo<img src="" class="company-logo"></a>
                     </div>
                 </div>
             </div>

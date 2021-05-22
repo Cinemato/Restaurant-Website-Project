@@ -119,5 +119,15 @@ class Cart{
 
         return $row;
     }
+
+    public function addQuantity($productId){
+        $cart = $this->getCurrentCart($_SESSION['user_id']);
+        $item = $this->getItem($productId);
+        $cartId = $cart['cart_id'];
+        $qty = $item['quantity'] + 1;
+        $query = $this->db->con->query("UPDATE cartItems SET quantity = {$qty} WHERE product_id = {$productId} AND cart_id = {$cartId}");
+
+        return $query;
+    }
 }
 ?>

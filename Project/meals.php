@@ -15,6 +15,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $cart->removeProduct($cart->getItem($_POST['product_id'])['cartItem_id']);
         header("Location:" . $_SERVER['PHP_SELF']);
     }
+    else if(isset($_POST['incart'])){
+        $cart->addQuantity($_POST['product_id']);
+        header("Location:" . $_SERVER['PHP_SELF']);
+    }
 }
 ?>
 <body>
@@ -44,10 +48,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                         <?php if(isset($_SESSION['user_id'])){
                                                 if(!$cart->inCart($product['product_id']) ) {
                                         ?>
-                                        <div class=".btn-clss"><input type="submit" class="action-button add-cart-button" value = "Add Cart" name="add"></div>
-                                        <?php } else{?>
-                                        <div class=".btn-clss"><input type="submit" class="action-button add-cart-button" disabled style="background: limegreen" value = "Added"></div>        
-                                        <?php }} else{ ?>
+                                            <div class=".btn-clss"><input type="submit" class="action-button add-cart-button" value = "Add Cart" name="add"></div>
+                                        <?php } else{?>                               
+                                                <div class=".btn-clss"><input type="submit" class="action-button add-cart-button" value = "Add Cart" name="incart"></div>
+                                            
+                                        <?php }} else{?>        
                                         <div class=".btn-clss"><input type="submit" class="action-button add-cart-button" value = "Add Cart" name="add"></div>
                                         <?php }?>
                                     </div>
@@ -89,7 +94,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                             </div>
 
                                             <div class="" style="margin-left:50px;">
-                                                <input type="number" id="count" name="<?php echo "count" . $item['cartItem_id']?>?>" style="float: left;" value="1" min="1"><br>
+                                                <input type="number" id="count" disabled style="float: left;" value="<?php echo $item['quantity']?>" min="1"><br>
                                                 <input type = "submit" value = "X" name="delete" class="delete-item">
                                             </div>
                                         </form> 

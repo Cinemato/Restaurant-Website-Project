@@ -19,8 +19,8 @@ class Products{
         return $rows;
     }
 
-    public function getProduct($id){
-        $query = $this->db->con->query("SELECT * FROM products WHERE product_id = {$id}");
+    public function getProduct($productId){
+        $query = $this->db->con->query("SELECT * FROM products WHERE product_id = {$productId}");
         $row = mysqli_fetch_assoc($query);
         
         return $row;
