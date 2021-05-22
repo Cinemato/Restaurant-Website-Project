@@ -83,7 +83,7 @@ $orders = $order->getOrders($_SESSION['user_id']);
                       ?></td>
                       <td><?php echo $userOrder['date_created']?></td>
                       <td><?php echo $userOrder['total']?></td>
-                      <td><a class="link-redirector feedback-link" href="#">Give Feedback</button></td>
+                      <td><a class="link-redirector feedback-link" href="contact.php">Give Feedback</button></td>
                     </tr>
 
                     <?php }?>
