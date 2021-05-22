@@ -23,7 +23,7 @@ include('Partial-Files/header.php')
                     ?>
                         <div class="col-6 mx-auto">
                             <h1 id="page-name">Sign Up</h1>
-                            <p id="page-description">See your growth and get consulting support!</p>
+                            <p id="page-description">Delicious meals at your doorstep!</p>
                         </div>  
                     </div>
                     <div class="col-12">
