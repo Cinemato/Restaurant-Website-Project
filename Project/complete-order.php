@@ -15,7 +15,7 @@ else{
 }
 
 if(count($cart->getCurrentCartItems()) <= 0){
-    header("Location: meals.php");
+    header("Location: index.php");
 }
 
 ?>

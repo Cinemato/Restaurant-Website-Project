@@ -42,7 +42,7 @@ if(isset($_POST['login-submit']))
                     session_start();
                     $_SESSION['user_id'] = $row['user_id'];
                     $_SESSION['email'] = $row['email'];
-                    header("Location: ../meals.php?login=success");
+                    header("Location: ../index.php?login=success");
                     exit();
                 }
 

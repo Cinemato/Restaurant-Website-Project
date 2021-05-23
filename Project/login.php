@@ -38,12 +38,7 @@ include('Partial-Files/header.php')
                                 <div class="password-textfield">
                                     <label for="password" class="text-field-text">Password*</label><br>
                                     <input type="password" id="password" name="password" class="text-field-input"><br>
-                                </div>   
-                                <div class="forget-password">
-                                    <p class="link-redirector link-redirector-right">
-                                        <a href="#">Forget password?</a>
-                                    </p>
-                                </div>  
+                                </div>    
                                 <button type="submit" class="action-button" name="login-submit">Login</button>
                                 <div class="forget-password">
                                     <p class="link-redirector link-redirector-left">    

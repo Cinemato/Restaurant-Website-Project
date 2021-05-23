@@ -3,7 +3,7 @@
             <div class="col-3">
                 <div class="col-6 mx-auto">
                     <div class="header-logo">
-                        <a href="meals.php">Company Logo<img src="" class="company-logo"></a>
+                        <a href="index.php">Company Logo<img src="" class="company-logo"></a>
                     </div>
                 </div>
             </div>
@@ -12,7 +12,7 @@
                     <div class="header-menu">
                         <ul>
                             <li>
-                                <a href="meals.php">Meals</a>
+                                <a href="index.php">Meals</a>
                             </li>
                             <li>
                                 <a href="contact.php">Contact</a>
